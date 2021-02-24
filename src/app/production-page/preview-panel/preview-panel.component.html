@@ -1,0 +1,23 @@
+<h3>Panel Preview</h3>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>2D Drawing</a>
+    <ng-template ngbNavContent>
+      <p>2D Drawing Tab Content</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>3D Model</a>
+    <ng-template ngbNavContent>
+      <p>3D Model Tab Content</p>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Bunk Plan</a>
+    <ng-template ngbNavContent>
+      <p>Bunk Plan Image Content</p>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="border-right border-left border-bottom h-50"></div>
+<button type="button" class="btn btn-primary mt-2 mb-5 w-100">Send To Robot</button>
