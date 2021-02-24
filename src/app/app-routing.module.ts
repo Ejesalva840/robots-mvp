@@ -1,8 +1,8 @@
-import { SettingsPageComponent } from './settings-page/settings-page.component';
-import { ReportsPageComponent } from './reports-page/reports-page.component';
-import { ProductionPageComponent } from './production-page/production-page.component';
-import { UploadPageComponent } from './upload-page/upload-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { SettingsPageComponent } from './components/settings-page/settings-page.component';
+import { ReportsPageComponent } from './components/reports-page/reports-page.component';
+import { ProductionPageComponent } from './components/production-page/production-page.component';
+import { UploadPageComponent } from './components/upload-page/upload-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
