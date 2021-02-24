@@ -1,4 +1,5 @@
 <div class="container-fluid">
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Company Name</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,5 +34,72 @@
         </div>     
        </span>
     </div>
-  </nav></div>
-<router-outlet></router-outlet>
+  </nav>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-3 mb-5">
+      <h3>Project File</h3>
+      <div class="custom-file mb-3">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+
+      <br />
+      <h3>Panels</h3>
+      <div class="card">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-primary">Front Wall</li>
+          <li class="list-group-item list-group-item-secondary">2 x 2 Window</li>
+          <li class="list-group-item list-group-item-success">2 x 34 Wall</li>
+          <li class="list-group-item list-group-item-danger">2 - Door</li>
+          <li class="list-group-item list-group-item-warning">Rear 23</li>
+          <li class="list-group-item list-group-item-info">Rear 63</li>
+          <li class="list-group-item list-group-item-light">Front_Exit</li>
+          <li class="list-group-item list-group-item-dark">Front_Enter</li>
+          <li class="list-group-item">Test</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-5 mh-100">
+      <h3>Panel Preview</h3>
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>2D Drawing</a>
+          <ng-template ngbNavContent>
+            <p>2D Drawing Tab Content</p>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>3D Model</a>
+          <ng-template ngbNavContent>
+            <p>3D Model Tab Content</p>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+          <a ngbNavLink>Bunk Plan</a>
+          <ng-template ngbNavContent>
+            <p>Bunk Plan Image Content</p>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" class="border-right border-left border-bottom h-50"></div>
+      <button type="button" class="btn btn-primary mt-2 mb-5 w-100">Send To Robot</button>
+    </div>
+
+    <div class="col-md-3 mb-5">
+      <h3>Production Status</h3>
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          Placeholder
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
