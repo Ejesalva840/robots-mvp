@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationType } from 'src/app/models/notification';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-preview-panel',
@@ -9,7 +11,11 @@ export class PreviewPanelComponent implements OnInit {
 
   active = 1;
 
-  constructor() { }
+  constructor(private notificationService: NotificationService) { }
+
+  sendToServer() {
+    this.notificationService.sendMessage({message: 'Sent to robot', messageType: NotificationType.INFO});
+  }
 
   ngOnInit(): void {
   }

@@ -20,4 +20,4 @@
   </li>
 </ul>
 <div [ngbNavOutlet]="nav" class="border-right border-left border-bottom h-50"></div>
-<button type="button" class="btn btn-primary mt-2 mb-5 w-100">Send To Robot</button>
+<button type="button" (click)="sendToServer()" class="btn btn-primary mt-2 mb-5 w-100">Send To Robot</button>

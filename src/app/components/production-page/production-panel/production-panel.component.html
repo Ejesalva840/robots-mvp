@@ -8,10 +8,46 @@
   <div class="list-group-item list-group-item-success col-9">2 x 34 Wall</div>
 </div>
 <div class="row mb-3">
-  <ngb-progressbar class="w-100" type="success" textType="white" [value]="25" [animated]="true" [showValue]="true"></ngb-progressbar>
+  <ngb-progressbar class="w-100 mt-2" type="success" textType="white" [value]="30" [striped]="true" [animated]="true" [showValue]="true"></ngb-progressbar>
 </div>
 <div class="row card">
   <div class="card-body">
-    Placeholder
+  
+    <!-- ProgressBars -->
+    <ngb-progressbar [showValue]="true" class="mt-2" type="success" [value]="98"></ngb-progressbar>
+    <ngb-progressbar [showValue]="true" class="mt-2" type="warning" [value]="63"></ngb-progressbar>
+    <ngb-progressbar [showValue]="true" class="mt-2" type="danger" [value]="27"></ngb-progressbar>
+
+    <!-- Checkboxes -->
+    <div class="form-check form-check-inline mt-2">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <label class="form-check-label" for="inlineCheckbox1">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+      <label class="form-check-label" for="inlineCheckbox2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+      <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-2">
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-danger">Danger</button>
+      <button type="button" class="btn btn-warning">Warning</button>
+    </div>
+
+    <!-- Button Group Flat  -->
+    <div class="btn-group btn-group-lg mt-2" role="group" aria-label="Button group">
+      <button type="button" class="btn btn-secondary">Left</button>
+      <button type="button" class="btn btn-secondary">Middle</button>
+      <button type="button" class="btn btn-secondary">Right</button>
+    </div>
+
+    <!-- TextArea-->
+    <textarea class="w-100 mt-2" rows="4" placeholder="Error placeholder" disabled></textarea>
   </div>
 </div>

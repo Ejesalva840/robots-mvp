@@ -1,5 +1,6 @@
 <div class="container">
   <app-header></app-header>
+  <ngb-alert #selfClosingAlert *ngIf="message" class="alert-box" type="{{messageType}}" (closed)="message = ''">{{ message }}</ngb-alert>
 
   <router-outlet></router-outlet>
 </div>
