@@ -14,13 +14,20 @@ jobs:
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.5
 
+    - name: npm install and npm run build
+      run: |  
+        npm i  
+        npm run build --prod
+        
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name ${{secrets.STORAGE_ACCOUNT}} -d '$web' -s ./dist/production-mvp/
+            az storage blob upload-batch --account-name ${{secrets.STORAGE_ACCOUNT}} -d '$web' -s ./dist/production-mvp/*
   
   # Azure logout 
     - name: logout
