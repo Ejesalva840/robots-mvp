@@ -8,28 +8,32 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:            
     - uses: actions/checkout@v2
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
-    - name: Purge Previous Contents
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: |
-          az storage blob delete-batch --account-name ${STORAGE_ACCOUNT} --pattern $web/* -s ${CONTAINER_NAME} 
+  deploy:
+    name: 'Deploy to Azure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge Previous Contents
+      - uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+            az storage blob delete-batch --account-name ${env.STORAGE_ACCOUNT} --pattern $web/* -s ${env.CONTAINER_NAME} 
 
-    - name: Upload to blob storage
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: |
-            az storage blob upload-batch --account-name ${STORAGE_ACCOUNT} -d '$web' -s .
-  
-  # Azure logout 
-    - name: logout
-      run: |
-            az logout
+      - name: Upload to blob storage
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+            az storage blob upload-batch --account-name ${env.STORAGE_ACCOUNT} -d '$web' -s .
+            
+      # Azure logout 
+      - name: logout
+        run: |
+              az logout
