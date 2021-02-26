@@ -1,5 +1,5 @@
 import { PanelItem, PanelType } from './../../../models/panel-item';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NotificationType } from 'src/app/models/notification';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -10,6 +10,9 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class ProjectPanelComponent implements OnInit {
 
+  @ViewChild('fileSelectorInput')
+  fileSelectorInput!: ElementRef;
+  
   constructor(private notificationService: NotificationService) { }
 
   defaultData: PanelItem[] = [
@@ -32,11 +35,28 @@ export class ProjectPanelComponent implements OnInit {
     const selectedFile = event.target.files[0];
 
     if (selectedFile) {
+      const fileReader = new FileReader();
+
+      fileReader.readAsText(selectedFile, "UTF-8");
+
+      fileReader.onload = () => {
+        const result = fileReader.result;
+        console.log(result);
+        console.log(JSON.parse(result));
+      };
+
+      // Error
+      fileReader.onerror = (error) => {
+        console.log(error);
+        this.notificationService.sendMessage({message: 'Invalid file format', messageType: NotificationType.ERROR});
+      };
 
       this.notificationService.sendMessage({message: 'File Selected', messageType: NotificationType.SUCCESS});
     } else {      
       this.notificationService.sendMessage({message: 'No file selected', messageType: NotificationType.ERROR});
     }
+
+    this.fileSelectorInput.nativeElement.value = '';
   }
 
 }
