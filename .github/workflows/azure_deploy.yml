@@ -19,7 +19,7 @@ jobs:
     name: 'Deploy to Azure'
     runs-on: ubuntu-latest
     steps:
-    - name: Purge Previous Contents
+    - name: 'Purge Previous Contents'
     - uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
