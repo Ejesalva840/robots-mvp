@@ -34,7 +34,7 @@ export class ProjectPanelComponent implements OnInit {
   fileSelected(event: any) {
     const selectedFile = event.target.files[0];
 
-    if (selectedFile) {
+    if (selectedFile && selectedFile.size > 0) {
       const fileReader = new FileReader();
 
       fileReader.readAsText(selectedFile, "UTF-8");
@@ -42,7 +42,17 @@ export class ProjectPanelComponent implements OnInit {
       fileReader.onload = () => {
         const result = fileReader.result;
         console.log(result);
-        console.log(JSON.parse(result));
+        if (result && !(result instanceof ArrayBuffer)) {
+          try {
+            const JsonResult = JSON.parse(result)
+            console.log(JsonResult);
+            this.defaultData = JsonResult;
+            this.notificationService.sendMessage({message: 'File Selected', messageType: NotificationType.SUCCESS});  
+          } catch (error) {
+            this.notificationService.sendMessage({message: 'Invalid file format', messageType: NotificationType.ERROR});
+          }
+        } else {
+        }
       };
 
       // Error
@@ -51,9 +61,8 @@ export class ProjectPanelComponent implements OnInit {
         this.notificationService.sendMessage({message: 'Invalid file format', messageType: NotificationType.ERROR});
       };
 
-      this.notificationService.sendMessage({message: 'File Selected', messageType: NotificationType.SUCCESS});
-    } else {      
-      this.notificationService.sendMessage({message: 'No file selected', messageType: NotificationType.ERROR});
+    } else {
+      this.notificationService.sendMessage({message: 'Invalid file format', messageType: NotificationType.ERROR});
     }
 
     this.fileSelectorInput.nativeElement.value = '';
