@@ -27,7 +27,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name ${{secrets.STORAGE_ACCOUNT}} -d '$web' -s ./dist/production-mvp/*
+            az storage blob upload-batch --account-name ${{secrets.STORAGE_ACCOUNT}} -d '$web' -s ./dist/production-mvp/
   
   # Azure logout 
     - name: logout
